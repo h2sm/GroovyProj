@@ -16,7 +16,19 @@ jar{
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-task dockerDeploy
-dockerDeploy{
+task copyFile(){
+    //здесь попробуй сделать, чтобы файл отображался каким-то образом
+}
+task dockerDeploy(type:Exec){
+    commandLine "cmd","/c",' '//для запуска в cmd
 
 }
+//dockerDeploy{
+//    commandLine "cmd","/c",'.\\build\\build.exe parse /p 246 /o ".\\strings.xml.bcg" /novalidate /l 1033 /sr "@LbaRoot@\\settings\\default\\lss\\default.config" "..\\app\\src\\main\\res\\values\\strings.xml"'
+//
+//}
+//tasks.register('dockerDeploy'){
+//    doLast{
+//
+//    }
+//}
