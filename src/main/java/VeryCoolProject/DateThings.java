@@ -1,3 +1,5 @@
+package VeryCoolProject;
+
 import java.util.Date;
 
 public class DateThings implements HelloMXBean{
