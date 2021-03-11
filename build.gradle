@@ -16,11 +16,15 @@ jar{
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-task copyFile(){
-    //здесь попробуй сделать, чтобы файл отображался каким-то образом
-}
+//task copyFile(){
+//    //здесь попробуй сделать, чтобы файл отображался каким-то образом
+//}
 task dockerDeploy(type:Exec){
-    commandLine "cmd","/c",' '//для запуска в cmd
+    commandLine "cmd","/c",'docker stop festive_pasteur'//останавливаем контейнер контейнер
+    commandLine "cmd","/c",'docker cp D:\\Java_laba\\GroovyProj\\build\\libs\\GroovyProj-1.0-SNAPSHOT.jar festive_pasteur:/tmp'//копируем новый жарник в контейнер
+    commandLine "cmd","/c",'docker start festive_pasteur -i java -jar GroovyProj-1.0-SNAPSHOT.jar'//запускаем
+
+
 
 }
 //dockerDeploy{
