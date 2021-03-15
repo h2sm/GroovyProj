@@ -1,7 +1,7 @@
 plugins {
     id 'application'
 }
-mainClassName = 'com.package.VeryCoolProject.Main'
+mainClassName = 'com.VeryCoolProject.Main'
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -10,29 +10,24 @@ repositories {
     mavenCentral()
 }
 jar{
+    manifest{
+        attributes(
+                'Main-Class':'VeryCoolProject.Main'
+        )
+    }
     enabled true
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-//task copyFile(){
-//    //здесь попробуй сделать, чтобы файл отображался каким-то образом
-//}
+
 task dockerDeploy(type:Exec){
-    commandLine "cmd","/c",'docker stop festive_pasteur'//останавливаем контейнер контейнер
+    ignoreExitValue true
+    commandLine "cmd","/c",'docker stop festive_pasteur'//останавливаем контейнер
+    sleep(4*1000)
     commandLine "cmd","/c",'docker cp D:\\Java_laba\\GroovyProj\\build\\libs\\GroovyProj-1.0-SNAPSHOT.jar festive_pasteur:/tmp'//копируем новый жарник в контейнер
+    sleep(4*1000)
     commandLine "cmd","/c",'docker start festive_pasteur -i java -jar GroovyProj-1.0-SNAPSHOT.jar'//запускаем
 
-
-
 }
-//dockerDeploy{
-//    commandLine "cmd","/c",'.\\build\\build.exe parse /p 246 /o ".\\strings.xml.bcg" /novalidate /l 1033 /sr "@LbaRoot@\\settings\\default\\lss\\default.config" "..\\app\\src\\main\\res\\values\\strings.xml"'
-//
-//}
-//tasks.register('dockerDeploy'){
-//    doLast{
-//
-//    }
-//}
